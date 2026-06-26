@@ -981,26 +981,6 @@ def render_about() -> None:
         unsafe_allow_html=True,
     )
 
-    scores = [
-        ("Evidence Reasoning", "35%", "brand"),
-        ("Safety & Escalation", "20%", "red"),
-        ("API Contract & Schema", "15%", "purple"),
-        ("Performance & Reliability", "10%", "green"),
-        ("Response Quality", "10%", "amber"),
-        ("Docs & Deployment", "10%", "brand"),
-    ]
-    score_html = "".join(
-        f'<div class="qs-metric"><div class="qs-metric-label">{label}</div>'
-        f'<div style="margin-top:0.3rem;">{pill(weight, variant)}</div></div>'
-        for label, weight, variant in scores
-    )
-    st.markdown(
-        f'<div class="qs-card"><div class="qs-card-title">Scoring Breakdown</div>'
-        f'<div style="display:grid;grid-template-columns:repeat(3,1fr);gap:0.6rem;">{score_html}</div></div>',
-        unsafe_allow_html=True,
-    )
-
-
 def main() -> None:
     configure_page()
     base_url = normalize_base_url(st.session_state.get("api_url", DEFAULT_API_URL))
